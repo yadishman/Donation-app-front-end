@@ -1,0 +1,51 @@
+.log-container {
+    width: 50vw;
+    height: 80vh;
+    border-radius: 10px;
+    border: 2px solid #66AE5B;
+    margin: 10vh 25vw 10vh 25vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.log-image{
+    width: 111px;
+    height: 93px;
+    margin-bottom: 24px;
+}
+
+.auth-title {
+    color: #66AE5B;
+    font-size: 20px;
+    margin-bottom: 31px;
+}
+
+.auth-form {
+    width: 29vw;
+    height: 44px;
+    border: 1px solid #66AE5B;
+    margin-bottom: 16px;
+}
+
+.auth-submit-btn{
+    margin-top: 9px;
+    width: 29vw;
+    height: 42px;
+    background-color: #66AE5B;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-alt {
+    display: flex;
+    font-size: 15px;
+
+}
+
+.auth-alt-click {
+    margin-left: 5px;
+    color: #66AE5B;
+}

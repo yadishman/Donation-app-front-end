@@ -1,0 +1,40 @@
+.header-class {
+    top: 0px;
+    /* position:sticky; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-logo-txt {
+    font-size: 32px;
+    font-weight: bold;
+    color: #66AE5B;
+    transform: rotate(20deg);
+}
+
+.navigation {
+    display: flex;
+    margin-top: 63px;
+}
+
+.nav-item {
+    list-style: none;
+    margin-right: 20px;
+    color: #66AE5B;
+}
+
+.create-dontation-btn {
+    margin-top: 35px;
+    border: 1px solid #66AE5B;
+    border-radius: 5px;
+    width: 132px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #66AE5B;
+    color: white;
+    font-weight: bold;
+
+}

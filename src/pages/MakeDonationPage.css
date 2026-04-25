@@ -1,0 +1,53 @@
+.make-donation-page{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    margin-top: 50px;
+}
+.donation-entry{
+    border: 1px solid #66AE5B;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+}
+
+
+.enter-money{
+    width: 36vw;
+    height: 29px;
+    border: 1px solid #66AE5B;
+}
+.give-feedback{
+    width: 36vw;
+    height: 67px;
+    border: 1px solid #66AE5B;
+}
+
+.donate{
+    margin-top: 30px;
+    width: 36vw;
+    height: 39px;
+    border: 1px solid #66AE5B;
+    background-color: #66AE5B;
+    color: white;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.enter-amount-class{
+    color: #66AE5B;
+    margin-left: -30vw;
+}
+.give-comment-class{
+    color: #66AE5B;
+    margin-left: -30vw;
+}
+.donation-img{
+    height: 50vh;
+}

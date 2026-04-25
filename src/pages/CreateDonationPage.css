@@ -1,0 +1,46 @@
+.create-donation{
+    color: #66AE5B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.new-donation-title{
+    width: 83vw;
+    height: 57px;
+    border: 1px solid #66AE5B;
+    margin-bottom: 32px;
+}
+.new-donation-description{
+    width: 83vw;
+    height: 109px;
+    border: 1px solid #66AE5B;
+    margin-bottom: 32px;
+}
+
+.upload-image{
+    width: 83vw;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 1px solid #2AD40F;
+    background-color: #2AD40F;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 32px;
+}
+
+.create-new-donation{
+        width: 83vw;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 1px solid #66AE5B;
+    background-color: #66AE5B;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 32px;
+}
