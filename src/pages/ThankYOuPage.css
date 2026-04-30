@@ -1,0 +1,26 @@
+.thanks-page{
+    margin: 25vh 30vw;
+    border: 1px solid #66AE5B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.thanks-image{
+    width: 200px;
+    height: 200px;
+}
+
+.back-home{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background-color: #66AE5B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+}

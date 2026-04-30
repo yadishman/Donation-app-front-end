@@ -1,50 +1,29 @@
 import Header from "../components/Header";
 import DonationImage from '../assets/donation.png'
 import './HomePage.css'
+import { useState, useEffect } from "react";
+import axios from 'axios'
+import Post from "../components/Post";
 
-export default function HomePage(){
-    return(
+export default function HomePage() {
+    const [posts, setPosts] = useState([])
+    const loadPosts = async () => {
+        const response = await axios.get("http://localhost:5000/post")
+        setPosts(response.data)
+    }
+
+    useEffect(() => {
+        loadPosts()
+    }, [])
+
+    return (
         <>
-        <Header />
-        <div className="grid-container">
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
+            <Header />
+            <div className="grid-container">
+                {posts.map((post)=>{
+                    return <Post post={post} key={post._id} />
+                }) }
             </div>
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
-            </div>
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
-            </div>
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
-            </div>
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
-            </div>
-            <div className="card">
-                <img className="donation-image" src={DonationImage} />
-                <p className="donation-title">Help Appu fight his illness</p>
-                <progress value={0} className="progress-bar"></progress>
-                <p className="donation-amount">$0 Raised</p>
-            </div>
-            
-        </div>
         </>
     )
 }

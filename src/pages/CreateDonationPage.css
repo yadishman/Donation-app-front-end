@@ -10,6 +10,13 @@
     border: 1px solid #66AE5B;
     margin-bottom: 32px;
 }
+
+.new-donation-budget{
+    width: 83vw;
+    height: 57px;
+    border: 1px solid #66AE5B;
+    margin-bottom: 32px;
+}
 .new-donation-description{
     width: 83vw;
     height: 109px;

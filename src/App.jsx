@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import DonationDetailPage from './pages/DonationDetailPage'
 import MakeDonationPage from './pages/MakeDonationPage'
 import CreateDonationPage from './pages/CreateDonationPage'
+import ThankYOuPage from './pages/thankYouPage'
 
 function App() {
  
@@ -16,8 +17,9 @@ function App() {
      <Route path='/register' element={<RegisterPage />}/>
      <Route path='/' element={<HomePage />} />
      <Route path='/create-donation' element={<CreateDonationPage />} />
-     <Route path='/make-donation' element={<MakeDonationPage/>} />
-     <Route path='/donation-detail' element={<DonationDetailPage />} />
+     <Route path='/make-donation/:id' element={<MakeDonationPage/>} />
+     <Route path='/posts/:id' element={<DonationDetailPage />} />
+     <Route path='/thankyou' element={<ThankYOuPage />} />
     </Routes>
   )
 }
