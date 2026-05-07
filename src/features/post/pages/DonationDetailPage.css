@@ -68,30 +68,7 @@
     width: 100%;
 }
 
-.comment-title{
-    align-self: flex-start;
-    font-size: 25px;
-    color: #66AE5B;
-}
-.comments{
-    display: flex;
-    align-self: flex-start;
-    color: #66AE5B;
-}
-.commenter-avi{
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid #66AE5B;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 3px;
-}
-.comment-meta-data{
-    margin-top: 5px;
-}
+
 .donation-stats{
     height: 100vh;
     border: 2px solid #66AE5B;
@@ -151,34 +128,3 @@
     font-weight: normal;
 }
 
-.recent-donations{
-    display: flex;
-    margin-top: 10px;
-}
-
-.recent-donation-avi{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid #66AE5B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: -160px;
-    margin-right: 10px;
-    color: #66AE5B;
-}
-
-.recent-donation-metadata-and-amonut{
-    color: #66AE5B;
-}
-.recent-donator{
-    margin-top: 0px;
-}
-.recent-donation-amonut-and-time{
-    display: flex;
-    margin-top: -20px;
-}
-.recent-donation-amount{
-    margin-right: 20px;
-}

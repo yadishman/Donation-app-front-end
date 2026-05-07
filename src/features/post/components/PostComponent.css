@@ -1,3 +1,12 @@
+.grid-container{
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+
+}
+
+
 .card{
     padding-top: 10px;
     width: 27vw;

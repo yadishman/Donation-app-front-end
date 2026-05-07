@@ -1,6 +1,6 @@
-import './Post.css'
 import { Link } from 'react-router'
-export default function Post({post}) {
+import './PostComponent.css'
+export default function PostCard({post}) {
     
     return (
         <Link to={`/posts/${post._id}`} state={{post}} style={{textDecoration:'none'}}>
