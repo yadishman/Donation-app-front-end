@@ -1,53 +1,73 @@
-.create-donation{
-    color: #66AE5B;
+.create-donation {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(102, 174, 91, 0.15);
+    border: 1px solid rgba(102, 174, 91, 0.25);
+
+    padding: 40px 32px;
+    margin: 40px 0 0 30vw;   /* 👈 key change: left aligned instead of centered */
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.new-donation-title{
-    width: 83vw;
-    height: 57px;
-    border: 1px solid #66AE5B;
-    margin-bottom: 32px;
+    gap: 16px;
+
+    width: 100%;
+    max-width: 460px;
 }
 
-.new-donation-budget{
-    width: 83vw;
-    height: 57px;
-    border: 1px solid #66AE5B;
-    margin-bottom: 32px;
-}
-.new-donation-description{
-    width: 83vw;
-    height: 109px;
-    border: 1px solid #66AE5B;
-    margin-bottom: 32px;
+.new-donation {
+    color: #66AE5B;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
 }
 
-.upload-image{
-    width: 83vw;
-    height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.new-donation-title,
+.new-donation-budget,
+.new-donation-description {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(102, 174, 91, 0.4);
+    outline: none;
+    font-size: 1rem;
+    background: #fff;
+    transition: 0.2s ease;
+    box-sizing: border-box;
+}
+
+.new-donation-description {
+    min-height: 110px;
+    resize: none;
+}
+
+.new-donation-title:focus,
+.new-donation-budget:focus,
+.new-donation-description:focus {
+    border-color: #66AE5B;
+    box-shadow: 0 0 0 4px rgba(102, 174, 91, 0.15);
+}
+
+.upload-image {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px dashed rgba(102, 174, 91, 0.5);
+    background: #f8fff7;
+}
+
+.create-new-donation {
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    font-weight: 700;
     color: white;
-    border: 1px solid #2AD40F;
-    background-color: #2AD40F;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 32px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #66AE5B, #8fd694);
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
-.create-new-donation{
-        width: 83vw;
-    height: 49px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: 1px solid #66AE5B;
-    background-color: #66AE5B;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 32px;
+.create-new-donation:hover {
+    transform: translateY(-2px);
 }

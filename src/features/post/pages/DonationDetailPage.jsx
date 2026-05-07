@@ -9,8 +9,8 @@ export default function DonationDetailPage() {
     const navigate = useNavigate()
     const { id } = useParams()
     const location = useLocation()
-    const {post,error,loading} = usePost(location.state?.post)
-    
+    const { post, error, loading } = usePost(location.state?.post)
+
     return (
 
         <>
@@ -31,22 +31,44 @@ export default function DonationDetailPage() {
                     </div >
                     <div className="section-separator" />
                     <h1 className="comment-title">Comments of support</h1>
-                    <ListComment id={id}/>
+                    <ListComment id={id} />
                 </div>
                 <div className="donation-stats">
-                    <div className="donation-amt">
-                        <CircularProgress className="circular-progress" variant="determinate" enableTrackSlot={true} thickness={8} size={100} color="success" value={post.amount * 100 / post.budget} />
-                        <div className="donation-amount-numbers">
-                            <p className="current-donation">{`${post.amount}$ raised`}</p>
-                            <p className="donation-target">{`of ${post.budget}`}</p>
-                            <p className="total-donator-count">{`${post.donator_count} donations`}</p>
+                    <div className="donation-card">
+                        <div className="progress-wrapper">
+                            <CircularProgress
+                                className="circular-progress"
+                                variant="determinate"
+                                thickness={6}
+                                size={110}
+                                enableTrackSlot={true}
+                                color="success"
+                                value={(post.amount * 100) / post.budget}
+                            />
+                            <div className="progress-center-text">
+                                {Math.round((post.amount * 100) / post.budget)}%
+                            </div>
+                        </div>
+
+                        <div className="donation-info">
+                            <div className="raised-amount">
+                                ${post.amount.toLocaleString()}
+                            </div>
+
+                            <div className="meta">
+                                of ${post.budget.toLocaleString()}
+                            </div>
+
+                            <div className="meta subtle">
+                                {post.donator_count} donations
+                            </div>
                         </div>
                     </div>
-                    <div className="make-donation" onClick={()=>{
-                        navigate(`/make-donation/${post._id}`,{state:{post}})
+                    <div className="make-donation" onClick={() => {
+                        navigate(`/make-donation/${post._id}`, { state: { post } })
                     }}>Donate Now</div>
                     <h1 className="donation-recent-title">Recent Donation</h1>
-                    <ListDonation id={id}/>
+                    <ListDonation id={id} />
                 </div>
             </div>
         </>

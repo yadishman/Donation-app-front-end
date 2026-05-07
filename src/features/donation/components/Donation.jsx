@@ -1,17 +1,16 @@
 import formatDate from '../../../utils/formatDate'
 import './Donation.css'
-export default function Donation({donate}) {
+export default function Donation({ donate }) {
     return (
-        <div className="recent-donations">
+        <div className="recent-donation-card">
             <div className="recent-donation-avi">{donate?.donor.username[0].toUpperCase()}</div>
             <div className="recent-donation-metadata-and-amonut">
-                <p className="recent-donator">{donate?.donor.username}</p>
+                <div className="recent-donator">{donate?.donor.username}</div>
                 <div className="recent-donation-amonut-and-time">
-                    <p className="recent-donation-amount">{`$ ${donate.amount}`}</p>
-                    <p className="recent-donation-time">{formatDate(donate.createdAt)}</p>
+                    <span className="recent-donation-amount">${donate.amount}</span>
+                    <span className="recent-donation-time">{formatDate(donate.createdAt)}</span>
                 </div>
             </div>
         </div>
-
     )
 }

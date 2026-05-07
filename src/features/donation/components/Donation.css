@@ -1,31 +1,77 @@
-.recent-donations{
+
+
+.recent-donation-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px 0 rgba(78, 140, 62, 0.10);
+    border: 1.5px solid #4E8C3E;
     display: flex;
-    margin-top: 10px;
+    align-items: center;
+    padding: 14px 22px;
+    gap: 18px;
+    transition: box-shadow 0.2s, border 0.2s;
+    margin-bottom: 10px;
+    min-width: 220px;
+    max-width: 520px;
+    width: 100%;
+}
+.recent-donation-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(78, 140, 62, 0.18);
+    border: 2px solid #4E8C3E;
 }
 
-.recent-donation-avi{
-    width: 50px;
-    height: 50px;
+.recent-donation-avi {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid #66AE5B;
+    border: 2.5px solid #4E8C3E;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -160px;
-    margin-right: 10px;
-    color: #66AE5B;
+    color: #4E8C3E;
+    font-size: 1.2rem;
+    background: #f6fff3;
+    margin-right: 12px;
+    box-shadow: 0 2px 8px 0 rgba(78, 140, 62, 0.10);
 }
 
-.recent-donation-metadata-and-amonut{
-    color: #66AE5B;
-}
-.recent-donator{
-    margin-top: 0px;
-}
-.recent-donation-amonut-and-time{
+.recent-donation-metadata-and-amonut {
+    color: #4E8C3E;
     display: flex;
-    margin-top: -20px;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
 }
-.recent-donation-amount{
-    margin-right: 20px;
+.recent-donator {
+    font-weight: 700;
+    color: #4E8C3E;
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+}
+.recent-donation-amonut-and-time {
+    display: flex;
+    gap: 16px;
+    margin-top: 0;
+    font-size: 0.98rem;
+    opacity: 0.85;
+}
+.recent-donation-amount {
+    font-weight: 700;
+    color: #222;
+}
+.recent-donation-time {
+    color: #4E8C3E;
+}
+
+@media (max-width: 600px) {
+    .recent-donation-card {
+        gap: 8px;
+        padding: 10px 6px;
+        min-width: unset;
+        max-width: 98vw;
+    }
+    .recent-donation-avi {
+        margin-right: 6px;
+    }
 }
