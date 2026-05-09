@@ -21,8 +21,13 @@ export const loadPosts = async () => {
     }
 }
 
-export const createDonation = async(formData)=>{
-        await axios.post("http://localhost:5000/post", formData)
-        navigae("/")
+export const createDonation = async(formData,token)=>{
+        await axios.post("http://localhost:5000/post", formData,
+            {
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+            }
+        )
     }
 

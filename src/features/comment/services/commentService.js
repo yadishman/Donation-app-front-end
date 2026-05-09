@@ -1,10 +1,16 @@
 import axios from "axios"
-export const createComment = async (comment,id) => {
+export const createComment = async (comment,id, token) => {
     await axios.post("http://localhost:5000/comment", {
-        "author": "69edea1d26adeaac62377085",
         "content": comment,
         "post": id
-    })
+    },
+    {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+)
 }
 
 export const loadComments = async (id) => {

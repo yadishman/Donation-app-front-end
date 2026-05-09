@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { loadComments } from "../services/commentService";
 
-export default function useComment(id){
+export default function useComment(id) {
     console.log(`the id for this post is ${id}`)
-    const [comments,setComments]=useState([])
+    const [comments, setComments] = useState([])
     const [error, setError] = useState(false)
 
     const fetchComment = async () => {
-        try{
-        const comments = await loadComments(id)
-        setComments(comments)
+        try {
+            const comments = await loadComments(id)
+            setComments(comments)
+            
         }
-        catch (error){
+        catch (error) {
             setError(true)
+           
         }
-        
+
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchComment()
-    },[])
+    }, [])
 
-    return {comments,error}
+    return { comments, error }
 }

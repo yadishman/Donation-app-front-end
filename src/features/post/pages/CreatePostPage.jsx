@@ -3,6 +3,7 @@ import Header from "../../../components/Header.jsx"
 import { useCreatePost } from "../hooks/useCreatePost.js"
 import { useNavigate } from "react-router"
 import "./CreatePostPage.css"
+import { useAuth } from "../../../context/AuthContext.jsx"
 
 export default function CreatePostPage() {
 
@@ -12,6 +13,7 @@ export default function CreatePostPage() {
     const [description, setDescription] = useState("")
 
     const { createPost, error } = useCreatePost()
+    const {token} = useAuth()
 
     const navigate = useNavigate()
 
@@ -23,8 +25,10 @@ export default function CreatePostPage() {
     formData.append('author', "69edea1d26adeaac62377085")
 
     const createDonation = async () => {
-        await createPost(formData)
+        const postSuccess = await createPost(formData,token)
+        if(postSuccess){
         navigate("/")
+        }
     }
 
     return (
