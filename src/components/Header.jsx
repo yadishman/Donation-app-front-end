@@ -1,9 +1,11 @@
 import { useAuth } from '../context/AuthContext'
+import isTokenValid from '../utils/tokenValidation'
 import './Header.css'
 import { Link, useNavigate } from 'react-router'
 export default function Header({ onCreate = false }) {
 
-    const { isAuthorized, logout } = useAuth()
+    const { token, logout } = useAuth()
+    const isAuthorized = isTokenValid(token)
     const navigate = useNavigate()
     const handleLogout = async () => {
         const logoutSuccess = await logout()

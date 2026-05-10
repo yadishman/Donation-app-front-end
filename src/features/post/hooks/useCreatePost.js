@@ -10,7 +10,7 @@ export function useCreatePost (){
             return true
         }
         catch (error) {
-            setError(true)
+            setError(true)  
             return false
         }
     }

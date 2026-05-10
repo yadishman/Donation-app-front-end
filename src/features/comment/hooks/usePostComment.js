@@ -9,7 +9,7 @@ export default function usePostComment(){
             return true
         }
         catch (error){
-            setError(true)
+            setError(true)                                          
             return false
         }
     }

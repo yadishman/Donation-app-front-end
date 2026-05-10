@@ -13,7 +13,7 @@ export default function CreatePostPage() {
     const [description, setDescription] = useState("")
 
     const { createPost, error } = useCreatePost()
-    const {token} = useAuth()
+    const {token,logout} = useAuth()
 
     const navigate = useNavigate()
 
@@ -29,6 +29,7 @@ export default function CreatePostPage() {
         if(postSuccess){
         navigate("/")
         }
+
     }
 
     return (

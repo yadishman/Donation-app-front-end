@@ -14,7 +14,7 @@ export default function MakeDonationPage() {
     const navigate = useNavigate()
 
     const { post, loading, error } = usePost(location.state?.post)
-    const { token } = useAuth()
+    const { token,logout } = useAuth()
     const [donation, setDonation] = useState(0)
     const [comment, setComment] = useState("")
 
@@ -24,6 +24,7 @@ export default function MakeDonationPage() {
     const createDonation = async () => {
         const donationSucess = await makeDonation(donation, id, token)
         const commentSuccess = await postComment(comment, id,token)
+        
         if (donationSucess && commentSuccess) {
             navigate("/")
         }
