@@ -15,13 +15,25 @@ export default function Header({ onCreate = false }) {
     }
     return (
         <div className="header-class">
-            <p className="main-logo-txt">Donation</p>
+            <div className="left-brand">
+                <p className="main-logo-txt">GiveNow <span className="logo-accent">❤️</span></p>
+                <p className="tagline">Real people. Real impact.</p>
+            </div>
             <nav className="navigation">
                 <Link to={"/"} style={{ textDecoration: 'none' }}><li className="nav-item">Home</li></Link>
+                <Link to={'/create-donation'} style={{ textDecoration: 'none' }}><li className="nav-item">Start a Cause</li></Link>
                 <li className="nav-item">About</li>
                 {isAuthorized && <li className="nav-item" onClick={handleLogout}>Logout</li>}
             </nav>
-            {onCreate === false && isAuthorized ? <Link to={"/create-donation"} style={{ textDecoration: 'none' }}><div className="create-dontation-btn">Create donation</div></Link> : <Link to={"/login"} style={{ textDecoration: 'none' }}><div className="create-dontation-btn">Login</div></Link>}
+            {onCreate === false && isAuthorized ? (
+                <Link to={'/create-donation'} style={{ textDecoration: 'none' }}>
+                    <div className="create-dontation-btn">Create Cause</div>
+                </Link>
+            ) : (
+                <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                    <div className="create-dontation-btn">Login</div>
+                </Link>
+            )}
 
         </div>
     )

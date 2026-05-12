@@ -1,25 +1,25 @@
 .create-donation {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(102, 174, 91, 0.15);
-    border: 1px solid rgba(102, 174, 91, 0.25);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(255,112,67,0.08);
+    border: 1px solid rgba(255,112,67,0.12);
 
-    padding: 40px 32px;
-    margin: 40px 0 0 30vw;   /* 👈 key change: left aligned instead of centered */
+    padding: 28px 24px;
+    margin: 40px auto 0 auto;
 
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 
     width: 100%;
-    max-width: 460px;
+    max-width: 520px;
 }
 
 .new-donation {
-    color: #66AE5B;
-    font-size: 1.8rem;
+    color: #FF7043;
+    font-size: 1.6rem;
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .new-donation-title,
@@ -28,11 +28,11 @@
     width: 100%;
     padding: 12px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(102, 174, 91, 0.4);
+    border: 1px solid rgba(0,0,0,0.08);
     outline: none;
     font-size: 1rem;
     background: #fff;
-    transition: 0.2s ease;
+    transition: 0.18s ease;
     box-sizing: border-box;
 }
 
@@ -44,30 +44,35 @@
 .new-donation-title:focus,
 .new-donation-budget:focus,
 .new-donation-description:focus {
-    border-color: #66AE5B;
-    box-shadow: 0 0 0 4px rgba(102, 174, 91, 0.15);
+    border-color: #FF7043;
+    box-shadow: 0 6px 24px rgba(255,112,67,0.06);
 }
 
 .upload-image {
     width: 100%;
     padding: 10px;
     border-radius: 12px;
-    border: 1px dashed rgba(102, 174, 91, 0.5);
-    background: #f8fff7;
+    border: 1px dashed rgba(0,0,0,0.08);
+    background: #fffaf7;
 }
 
 .create-new-donation {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     text-align: center;
-    font-weight: 700;
+    font-weight: 800;
     color: white;
     border-radius: 12px;
-    background: linear-gradient(135deg, #66AE5B, #8fd694);
+    background: linear-gradient(90deg,#FF7043,#FF8A65);
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 0 10px 30px rgba(255,112,67,0.10);
 }
 
 .create-new-donation:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
+
+/* preview helpers */
+.sidebar-card img{border-radius:8px}
+.sidebar-card {padding:12px}

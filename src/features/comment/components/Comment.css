@@ -2,74 +2,70 @@
 
 .comment-title {
     align-self: flex-start;
-    font-size: 1.3rem;
-    color: #4E8C3E;
+    font-size: 1.2rem;
+    color: #FF7043;
     font-weight: 800;
     margin-bottom: 10px;
 }
 
 .comment-card {
     background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 18px 0 rgba(78, 140, 62, 0.10);
-    border: 1.5px solid #4E8C3E;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px 0 rgba(255,112,67,0.06);
+    border: 1px solid rgba(255,112,67,0.12);
     display: flex;
     align-items: center;
-    padding: 14px 22px;
-    gap: 18px;
-    transition: box-shadow 0.2s, border 0.2s;
+    padding: 12px 16px;
+    gap: 12px;
+    transition: box-shadow 0.18s, border 0.18s;
     margin-bottom: 10px;
-    min-width: 220px;
-    max-width: 520px;
-    width: 90%;
+    width: 100%;
 }
 .comment-card:hover {
-    box-shadow: 0 8px 32px 0 rgba(78, 140, 62, 0.18);
-    border: 2px solid #4E8C3E;
+    box-shadow: 0 18px 40px 0 rgba(255,112,67,0.08);
+    border: 1.5px solid rgba(255,112,67,0.16);
 }
 
 .commenter-avi {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 2.5px solid #4E8C3E;
+    border: 2px solid rgba(255,112,67,0.12);
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4E8C3E;
-    font-size: 1.2rem;
-    background: #f6fff3;
-    margin-right: 12px;
-    box-shadow: 0 2px 8px 0 rgba(78, 140, 62, 0.10);
+    color: #FF7043;
+    font-size: 1.05rem;
+    background: #fff6f3;
+    margin-right: 10px;
 }
 
 .comment-meta-data {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     width: 100%;
 }
 .commenter {
     font-weight: 700;
-    color: #4E8C3E;
-    font-size: 1.05rem;
+    color: #222;
+    font-size: 1rem;
     margin-bottom: 2px;
 }
 .comment-content {
-    color: #222;
-    font-size: 1rem;
-    background: #f6fff3;
+    color: #333;
+    font-size: 0.98rem;
+    background: #fffaf7;
     border-radius: 8px;
-    padding: 6px 10px;
+    padding: 8px 10px;
     margin: 0;
 }
 
 @media (max-width: 600px) {
     .comment-card {
         gap: 8px;
-        padding: 10px 6px;
-        min-width: unset;
+        padding: 10px 8px;
         max-width: 98vw;
     }
     .commenter-avi {

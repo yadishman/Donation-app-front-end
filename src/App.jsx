@@ -12,11 +12,13 @@ import LoginPage from './features/auth/pages/LogInPage'
 import RegisterPage from './features/auth/pages/RegisterPage'
 import PublicRoute from './route/PublicRoute'
 import PrivateRoute from './route/PrivateRoute'
+import Footer from './components/Footer'
 
 function App() {
 
 
   return (
+    <>
     <Routes>
       <Route element={<PublicRoute />}>
         <Route path='/login' element={<LoginPage />} />
@@ -31,6 +33,8 @@ function App() {
       </Route>
       {/* <Route path='/thankyou' element={<ThankYOuPage />} /> */}
     </Routes>
+    <Footer />
+    </>
   )
 }
 

@@ -1,0 +1,36 @@
+.app-footer{background-color: #eaa18b;padding:22px 12px;margin-top:48px}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.footer-inner .brand{font-weight:900;color:#fb8460}
+.footer-inner .meta{color:#9a9a9a;font-size:13px}
+@media(max-width:700px){.footer-inner{flex-direction:column;align-items:flex-start}}
+.app-footer{
+    border-top: 1px solid #FF7043;
+	margin-top:48px;
+	padding:28px 12px;
+	background: linear-gradient(180deg,#fff 0%, #fff 70%);
+	display:block;
+}
+.footer-inner{
+	width:100%;
+	max-width:none;
+	margin:0;
+	display:flex;
+	gap:12px;
+	align-items:center;
+	justify-content:space-between;
+	padding:18px 20px;
+}
+.footer-inner .brand{
+	font-weight:900;
+	color:#FF7043; /* Updated color to match the new design */
+	font-size:1.05rem;
+}
+.footer-inner .meta{
+	color:#374151;
+	font-size:13px;
+}
+
+
+@media(max-width:700px){
+	.footer-inner{flex-direction:column;align-items:flex-start}
+}

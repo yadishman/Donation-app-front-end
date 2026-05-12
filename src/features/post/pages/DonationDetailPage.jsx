@@ -41,9 +41,8 @@ export default function DonationDetailPage() {
                                 variant="determinate"
                                 thickness={6}
                                 size={110}
-                                enableTrackSlot={true}
-                                color="success"
                                 value={(post.amount * 100) / post.budget}
+                                style={{ color: '#FF7043' }}
                             />
                             <div className="progress-center-text">
                                 {Math.round((post.amount * 100) / post.budget)}%

@@ -22,7 +22,7 @@ export function AuthProvider ({children}){
     }
 
     return (
-       <AuthContext.Provider value={{logout,token,  setToken}}>
+       <AuthContext.Provider value={{logout,token, isTokenValid,  setToken}}>
        {children}
        </AuthContext.Provider>
     )

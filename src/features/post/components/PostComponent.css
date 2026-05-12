@@ -1,105 +1,46 @@
-
-
 .grid-container {
   margin-top: 60px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  justify-items: center;
+  align-items: start;
   width: 100%;
-  align-items: stretch;
 }
+
+@media (max-width: 1100px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .grid-container { grid-template-columns: 1fr; } }
 
 .card {
   background: white;
   border-radius: 18px;
-  box-shadow: 0 4px 24px 0 rgba(78, 140, 62, 0.10);
-  border: 1.5px solid #4E8C3E;
-  padding: 22px 18px 18px 18px;
-  min-width: 320px;
-  max-width: 340px;
-  width: 320px;
+  box-shadow: 0 8px 30px 0 rgba(255,112,67,0.08);
+  border: 1.2px solid rgba(255,112,67,0.14);
+  padding: 18px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
   transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
   cursor: pointer;
   animation: cardFadeIn 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.card:hover {
-  box-shadow: 0 12px 36px 0 rgba(78, 140, 62, 0.18);
-  border: 2.5px solid #4E8C3E;
-  transform: translateY(-8px) scale(1.04);
-}
+.card:hover { box-shadow: 0 18px 48px 0 rgba(255,112,67,0.12); transform: translateY(-6px) scale(1.02); }
 
-@keyframes cardFadeIn {
-  from { opacity: 0; transform: translateY(30px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+@keyframes cardFadeIn { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
+.donation-image { border-radius: 12px; width: 100%; height: 160px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 6px 18px 0 rgba(255,112,67,0.06); background: #fff6f3; }
 
-.donation-image {
-  border-radius: 12px;
-  width: 100%;
-  max-height: 140px;
-  object-fit: cover;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 8px 0 rgba(78, 140, 62, 0.10);
-  background: #f6fff3;
-}
+.donation-title { font-weight: 800; font-size: 1.05rem; color: #FF7043; margin-bottom: 8px; text-align: center; width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.6rem; }
 
+.progress-bar { border: 1.2px solid rgba(255,112,67,0.14); width: 85%; border-radius: 10px; height: 14px; margin-bottom: 10px; background: #fff6f2; display: block; margin-left: auto; margin-right: auto; box-shadow: 0 1px 6px 0 rgba(255,112,67,0.06); }
+.progress-bar::-webkit-progress-bar { background-color: #fff6f2; border-radius: 10px; height: 14px; }
+.progress-bar::-webkit-progress-value { background: linear-gradient(90deg, #FF7043 0%, #FF8A65 100%); border-radius: 10px; }
+.progress-bar::-moz-progress-bar { background: linear-gradient(90deg, #FF7043 0%, #FF8A65 100%); border-radius: 10px; }
 
-.donation-title {
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: #4E8C3E;
-  margin-bottom: 8px;
-  text-align: center;
-  width: 100%;
-}
+.donation-amount { color: #FF7043; font-weight: 700; font-size: 1.05rem; margin-top: 4px; text-align: center; width: 100%; letter-spacing: 0.5px; }
 
-
-.progress-bar {
-  border: 1.5px solid #4E8C3E;
-  width: 80%;
-  border-radius: 10px;
-  height: 14px;
-  margin-bottom: 10px;
-  background: #f6fff3;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 1px 4px 0 rgba(78, 140, 62, 0.08);
-}
-.progress-bar::-webkit-progress-bar {
-  background-color: #f6fff3;
-  border-radius: 10px;
-  height: 14px;
-}
-.progress-bar::-webkit-progress-value {
-  background: linear-gradient(90deg, #4E8C3E 0%, #8fd694 100%);
-  border-radius: 10px;
-}
-/* Firefox */
-.progress-bar::-moz-progress-bar {
-  background: linear-gradient(90deg, #4E8C3E 0%, #8fd694 100%);
-  border-radius: 10px;
-}
-
-
-.donation-amount {
-  color: #4E8C3E;
-  font-weight: 700;
-  font-size: 1.05rem;
-  margin-top: 4px;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
-}
-    align-self: flex-start;
-    color: #66AE5B;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-top: 4px;
-}
+/* size variants */
+.card-large { grid-column: 1 / -1 !important; }
+.card-large .donation-image { height: 260px; }
+.card-small { max-width: 520px; }
