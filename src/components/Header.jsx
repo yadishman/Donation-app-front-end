@@ -21,19 +21,18 @@ export default function Header({ onCreate = false }) {
             </div>
             <nav className="navigation">
                 <Link to={"/"} style={{ textDecoration: 'none' }}><li className="nav-item">Home</li></Link>
-                <Link to={'/create-donation'} style={{ textDecoration: 'none' }}><li className="nav-item">Start a Cause</li></Link>
                 <li className="nav-item">About</li>
                 {isAuthorized && <li className="nav-item" onClick={handleLogout}>Logout</li>}
             </nav>
             {onCreate === false && isAuthorized ? (
                 <Link to={'/create-donation'} style={{ textDecoration: 'none' }}>
-                    <div className="create-dontation-btn">Create Cause</div>
+                    <div className="create-dontation-btn">Start a Cause</div>
                 </Link>
-            ) : (
+            ) : onCreate === false && !isAuthorized? (
                 <Link to={'/login'} style={{ textDecoration: 'none' }}>
                     <div className="create-dontation-btn">Login</div>
                 </Link>
-            )}
+            ): <div></div>}
 
         </div>
     )
