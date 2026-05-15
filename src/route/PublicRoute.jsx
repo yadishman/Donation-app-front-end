@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../context/AuthContext";
+import isTokenValid from "../utils/tokenValidation";
 
 export default function PublicRoute(){
-    const {isTokenValid, token} = useAuth()
+    const {token} = useAuth()
     return isTokenValid(token)? <Navigate to="/" replace />:<Outlet />
 }

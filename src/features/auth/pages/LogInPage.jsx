@@ -1,18 +1,16 @@
-
 import { useState } from "react";
 import "./Auth.css";
 import { useLogin } from "../hooks/useLogin";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { useAuth } from "../../../context/AuthContext";
 
 export default function LoginPage() {
-
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  const { error, signinUser } = useLogin()
-  const {token, setToken} = useAuth()
+  const { error, signinUser, clearError } = useLogin()
+  const { setToken } = useAuth()
 
   const handleSignin = async (event) => {
     event.preventDefault()
@@ -21,15 +19,46 @@ export default function LoginPage() {
       navigate("/")
     }
   }
+
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1 className="logo">DonateHope</h1>
+        <h1 className="logo">GiveNow 💚</h1>
         <h2>Login</h2>
 
+        {error && (
+          <div className="auth-alert" role="alert">
+            <span className="auth-alert-icon" aria-hidden>!</span>
+            <div className="auth-alert-body">
+              <p className="auth-alert-title">Couldn&apos;t sign you in</p>
+              <p className="auth-alert-message">{error}</p>
+            </div>
+          </div>
+        )}
+
         <form className="auth-form" onSubmit={handleSignin}>
-          <input type="email" placeholder="Email" required onChange={(event) => { setEmail(event.target.value) }} />
-          <input type="password" placeholder="Password" required onChange={(event) => { setPassword(event.target.value) }} />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            value={email}
+            className={error ? 'input-error' : ''}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              if (error) clearError()
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            className={error ? 'input-error' : ''}
+            onChange={(e) => {
+              setPassword(e.target.value)
+              if (error) clearError()
+            }}
+          />
 
           <button type="submit" className="primary-btn">
             Login
@@ -37,7 +66,7 @@ export default function LoginPage() {
         </form>
 
         <p className="switch-text">
-          Don't have an account? <a href="/register">Register</a>
+          Don&apos;t have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

@@ -1,10 +1,6 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
-// import RegisterPage from './pages/RegisterPage'
-// import LoginPage from './pages/LoginPage'
 import HomePage from './features/post/pages/HomePage'
-
-// import ThankYOuPage from './pages/thankYouPage'
 import CreatePostPage from './features/post/pages/CreatePostPage'
 import MakeDonationPage from './features/donation/pages/MakeDonationPage'
 import DonationDetailPage from './features/post/pages/DonationDetailPage'
@@ -12,7 +8,7 @@ import LoginPage from './features/auth/pages/LogInPage'
 import RegisterPage from './features/auth/pages/RegisterPage'
 import PublicRoute from './route/PublicRoute'
 import PrivateRoute from './route/PrivateRoute'
-import Footer from './components/Footer'
+
 
 function App() {
 
@@ -33,7 +29,7 @@ function App() {
       </Route>
       {/* <Route path='/thankyou' element={<ThankYOuPage />} /> */}
     </Routes>
-    <Footer />
+    
     </>
   )
 }

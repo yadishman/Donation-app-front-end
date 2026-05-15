@@ -4,17 +4,22 @@ import { useCreatePost } from "../hooks/useCreatePost.js"
 import { useNavigate } from "react-router"
 import "./CreatePostPage.css"
 import { useAuth } from "../../../context/AuthContext.jsx"
+import Footer from "../../../components/Footer";
+
+const STEPS = [
+    { num: 1, label: 'Tell your story' },
+    { num: 2, label: 'Set your goal' },
+    { num: 3, label: 'Add a photo' },
+]
 
 export default function CreatePostPage() {
-
     const [title, setTitle] = useState("")
     const [budget, setBudget] = useState("")
     const [file, setFile] = useState(null)
     const [description, setDescription] = useState("")
 
-    const { createPost, error } = useCreatePost()
-    const {token} = useAuth()
-
+    const { createPost } = useCreatePost()
+    const { token } = useAuth()
     const navigate = useNavigate()
 
     const previewUrl = useMemo(() => {
@@ -22,79 +27,137 @@ export default function CreatePostPage() {
     }, [file])
 
     const createDonation = async () => {
-        if(!title || !budget || !description) return
+        if (!title || !budget || !description) return
         const formData = new FormData()
         formData.append("title", title)
-        if(file) formData.append("image", file)
+        if (file) formData.append("image", file)
         formData.append('description', description)
         formData.append('budget', budget)
-        const postSuccess = await createPost(formData,token)
-        if(postSuccess){
+        const postSuccess = await createPost(formData, token)
+        if (postSuccess) {
             navigate("/")
         }
     }
 
     return (
-        <>
+        <div className="page-shell">
             <Header onCreate={true} />
 
-            <div className="create-donation" style={{maxWidth:980,margin:'28px auto'}}>
-                <div style={{display:'flex',gap:20,flexWrap:'wrap'}}>
-                    <div style={{flex:1,minWidth:300}}>
-                        <h1 className="new-donation">Create Donation</h1>
+            <div className="create-page">
+                <div className="create-page-header animate-fade-in-up">
+                    <span className="create-badge">Start a fundraiser</span>
+                    <h1>Launch your cause in minutes</h1>
+                    <p>Share your story, set a goal, and start receiving donations from supporters worldwide.</p>
+                </div>
 
-                        <input
-                            className="new-donation-title"
-                            placeholder="Title"
-                            value={title}
-                            onChange={(event) => setTitle(event.target.value)}
-                        />
+                <div className="create-steps">
+                    {STEPS.map((step) => (
+                        <div className="create-step-pill" key={step.num}>
+                            <span className="step-num">{step.num}</span>
+                            {step.label}
+                        </div>
+                    ))}
+                </div>
 
-                        <input
-                            className="new-donation-budget"
-                            placeholder="Goal (e.g. 5000)"
-                            value={budget}
-                            onChange={(event) => setBudget(event.target.value)}
-                        />
+                <div className="create-layout">
+                    <form
+                        className="create-form"
+                        onSubmit={(e) => { e.preventDefault(); createDonation() }}
+                    >
+                        <section className="form-section">
+                            <label className="field-label" htmlFor="title">Fundraiser title</label>
+                            <input
+                                id="title"
+                                className="field-input"
+                                placeholder="e.g. Help Maria recover from surgery"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                            />
+                        </section>
 
-                        <textarea
-                            className="new-donation-description"
-                            placeholder="Description"
-                            value={description}
-                            onChange={(event) => setDescription(event.target.value)}
-                        />
+                        <section className="form-section">
+                            <label className="field-label" htmlFor="description">Your story</label>
+                            <textarea
+                                id="description"
+                                className="field-textarea"
+                                placeholder="Explain why you're fundraising and how donations will be used..."
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                            <span className="field-hint">{description.length} characters · Be clear and honest</span>
+                        </section>
 
-                        <label style={{display:'block',marginTop:6,color:'#6b6b6b',fontSize:13}}>Upload cover image</label>
-                        <input
-                            className="upload-image"
-                            type="file"
-                            accept="image/*"
-                            onChange={(event) => setFile(event.target.files[0])}
-                        />
+                        <section className="form-section">
+                            <label className="field-label" htmlFor="budget">Fundraising goal ($)</label>
+                            <input
+                                id="budget"
+                                className="field-input"
+                                type="number"
+                                min="1"
+                                placeholder="5000"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
+                                required
+                            />
+                        </section>
 
-                        <button className="create-new-donation" onClick={createDonation} style={{marginTop:12}}>
-                            Create donation
+                        <section className="form-section">
+                            <label className="field-label">Cover photo</label>
+                            <label className="upload-zone">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="upload-input"
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                />
+                                <span className="upload-icon">📷</span>
+                                <span className="upload-text">
+                                    {file ? file.name : 'Click to upload or drag an image'}
+                                </span>
+                                <span className="upload-hint">JPG or PNG, recommended 1200×630</span>
+                            </label>
+                        </section>
+
+                        <button type="submit" className="create-submit-btn">
+                            Publish fundraiser
                         </button>
-                    </div>
+                    </form>
 
-                    <div style={{width:320}}>
-                        <div className="sidebar-card">
-                            <div style={{fontWeight:800,fontSize:16,color:'#222'}}>Preview</div>
-                            {previewUrl ? (
-                                <img src={previewUrl} style={{width:'100%',height:160,objectFit:'cover',borderRadius:8,marginTop:10}} />
-                            ) : (
-                                <div style={{width:'100%',height:160,display:'flex',alignItems:'center',justifyContent:'center',background:'#fff6f3',borderRadius:8,marginTop:10,color:'#FF7043'}}>No image selected</div>
-                            )}
-
-                            <div style={{marginTop:12}}>
-                                <div style={{fontWeight:700}}>{title || 'Your cause title'}</div>
-                                <div style={{color:'#6b6b6b',marginTop:6}}>{description ? description.slice(0,120) + (description.length>120?'...':'') : 'Short description shown here.'}</div>
-                                <div style={{marginTop:12,fontWeight:800,color:'#FF7043'}}>{budget ? `$${Number(budget).toLocaleString()} goal` : '$0 goal'}</div>
+                    <aside className="create-preview-panel">
+                        <h3 className="preview-heading">Live preview</h3>
+                        <div className="preview-card">
+                            <div className="preview-image-wrap">
+                                {previewUrl ? (
+                                    <img src={previewUrl} alt="Preview" className="preview-image" />
+                                ) : (
+                                    <div className="preview-placeholder">Your photo here</div>
+                                )}
+                            </div>
+                            <h4 className="preview-title">{title || 'Your fundraiser title'}</h4>
+                            <p className="preview-desc">
+                                {description
+                                    ? description.slice(0, 140) + (description.length > 140 ? '...' : '')
+                                    : 'Your story will appear here so donors understand your cause.'}
+                            </p>
+                            <div className="preview-progress-track">
+                                <div className="preview-progress-fill" style={{ width: '0%' }} />
+                            </div>
+                            <div className="preview-goal">
+                                <strong>$0</strong>
+                                <span> raised of {budget ? `$${Number(budget).toLocaleString()}` : '$0'} goal</span>
                             </div>
                         </div>
-                    </div>
+                        <ul className="preview-tips">
+                            <li>Use a clear, emotional photo</li>
+                            <li>Explain exactly how funds will be used</li>
+                            <li>Set a realistic, achievable goal</li>
+                        </ul>
+                    </aside>
                 </div>
             </div>
-        </>
+            <Footer />
+        </div>
     )
 }

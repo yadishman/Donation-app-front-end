@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { registerUser } from "../services/authServices";
+import getAuthErrorMessage from "../utils/getAuthErrorMessage";
 
-export default function useRegister (){
-    
-    const [error, setError] = useState(false)
+export default function useRegister() {
+    const [error, setError] = useState(null)
 
     const addUser = async (username, email, password, setToken) => {
-        try{
-            await registerUser(username,email,password, setToken)
+        setError(null)
+        try {
+            await registerUser(username, email, password, setToken)
             return true
-        }
-        catch (error){
-            setError(true)
+        } catch (err) {
+            setError(getAuthErrorMessage(err))
             return false
         }
     }
 
-    return { error, addUser}
+    const clearError = () => setError(null)
+
+    return { error, addUser, clearError }
 }

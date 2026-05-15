@@ -1,16 +1,23 @@
 import useDonation from "../hooks/useDonation"
 import Donation from "./Donation"
+import './Donation.css'
 
-export default function ListDonation({id}){
-    const {donations, error} = useDonation(id)
-    if(!donations || donations.length === 0) return <div style={{color:'#6b6b6b'}}>No donations yet — be the first.</div>
+export default function ListDonation({ id }) {
+    const { donations } = useDonation(id)
+
+    if (!donations?.length) {
+        return (
+            <div className="donations-empty">
+                No donations yet — be the first to give.
+            </div>
+        )
+    }
+
     return (
-        <div style={{display:'flex',flexDirection:'column',gap:8}}>
-        {donations.map(donation => {
-            return (
+        <div className="donations-list">
+            {donations.map(donation => (
                 <Donation donate={donation} key={donation._id || donation.createdAt} />
-            )
-        })}
+            ))}
         </div>
     )
 }

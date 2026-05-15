@@ -1,137 +1,114 @@
-
 .header-class {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 40px;
-    background: linear-gradient(90deg, #FF8A65 0%, #FF7043 100%);
-    box-shadow: 0 6px 30px 0 rgba(255, 112, 67, 0.12);
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
-    transition: background 0.3s;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--header-gradient, linear-gradient(135deg, #00875a 0%, #00a86b 55%, #02c77a 100%));
+  box-shadow: 0 4px 24px rgba(0, 120, 70, 0.2);
+  animation: fadeIn 0.5s ease both;
+}
+
+.left-brand {
+  display: flex;
+  flex-direction: column;
 }
 
 .main-logo-txt {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #fffaf8;
-    letter-spacing: 1px;
-    transform: none;
-    cursor: pointer;
-    transition: color 0.2s, text-shadow 0.2s;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
+
 .main-logo-txt:hover {
-    color: #fff;
-    text-shadow: 2px 2px 12px rgba(0,0,0,0.18);
+  opacity: 0.92;
 }
 
 .logo-accent {
-    margin-left: 8px;
-    font-size: 1.05rem;
-    display: inline-block;
+  margin-left: 4px;
 }
 
 .tagline {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.9);
-    margin-top: -6px;
-    margin-left: 4px;
-    font-weight: 600;
-    opacity: 0.95;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 2px 0 0;
+  font-weight: 500;
 }
 
 .navigation {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    margin-top: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {
-    list-style: none;
-    color: rgba(255,255,255,0.95);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 999px;
-    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-    cursor: pointer;
-    position: relative;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
 }
-.nav-item:hover, .nav-item.active {
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.08);
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 .create-dontation-btn {
-    border: none;
-    border-radius: 999px;
-    padding: 10px 18px;
-    background: #fff;
-    color: #FF5722;
-    font-size: 0.95rem;
-    font-weight: 800;
-    box-shadow: 0 6px 18px 0 rgba(255, 87, 34, 0.12);
-    cursor: pointer;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-    margin-left: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.create-dontation-btn:hover {
-    transform: translateY(-3px);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  background: #fff;
+  color: #00875a;
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Responsive Design */
+.create-dontation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 900px) {
-    .header-class {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 18px;
-    }
-    .navigation {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    .main-logo-txt {
-        font-size: 1.5rem;
-    }
-    .create-dontation-btn {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 10px;
-    }
+  .header-class {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 18px;
+  }
+
+  .navigation {
+    order: 3;
+    width: 100%;
+  }
+
+  .create-dontation-btn {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 600px) {
-    .header-class {
-        padding: 10px 6px;
-        border-radius: 0 0 12px 12px;
-    }
-    .main-logo-txt {
-        font-size: 1.1rem;
-    }
-    .navigation {
-        flex-direction: column;
-        gap: 6px;
-        width: 100%;
-        margin-top: 6px;
-    }
-    .nav-item {
-        width: 100%;
-        text-align: left;
-        padding: 8px 10px;
-    }
-    .create-dontation-btn {
-        width: 100%;
-        margin-top: 8px;
-    }
+  .main-logo-txt {
+    font-size: 1.25rem;
+  }
+
+  .create-dontation-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

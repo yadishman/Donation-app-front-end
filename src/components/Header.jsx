@@ -16,7 +16,9 @@ export default function Header({ onCreate = false }) {
     return (
         <div className="header-class">
             <div className="left-brand">
-                <p className="main-logo-txt">GiveNow <span className="logo-accent">❤️</span></p>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <p className="main-logo-txt">GiveNow <span className="logo-accent">💚</span></p>
+                </Link>
                 <p className="tagline">Real people. Real impact.</p>
             </div>
             <nav className="navigation">

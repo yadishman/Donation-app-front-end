@@ -10,17 +10,32 @@
   overflow-x: hidden;
 }
 
-.grid-container {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
-  justify-items: center;
-  align-items: start;
-  width: 100%;
+.posts-empty {
+  text-align: center;
+  padding: 48px 24px;
+  background: white;
+  border-radius: var(--radius, 16px);
+  border: 1px dashed rgba(0, 168, 107, 0.2);
 }
 
-/* Top single featured card */
+.posts-empty-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 12px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.posts-empty h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: var(--text, #1a2e28);
+}
+
+.posts-empty p {
+  margin: 0;
+  color: var(--text-muted, #5c6f68);
+}
+
 .top-single {
   margin-top: 18px;
   width: 100%;
@@ -34,7 +49,6 @@
   max-width: 760px;
 }
 
-/* Second row */
 .second-row {
   margin-top: 20px;
   display: grid;
@@ -42,7 +56,6 @@
   gap: 28px;
   align-items: start;
   width: 100%;
-  overflow: hidden;
 }
 
 .second-row .card {
@@ -51,197 +64,177 @@
   justify-self: center;
 }
 
-/* Rest of cards: normal grid, no horizontal scrolling */
 .rest-scroll {
   margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
   width: 100%;
-  overflow-x: hidden;
 }
 
 .rest-scroll .card {
   width: 100%;
   max-width: 520px;
   justify-self: center;
-  flex: unset;
 }
 
 /* Card */
 .card {
   background: white;
   border-radius: 18px;
-  box-shadow: 0 8px 30px 0 rgba(255, 112, 67, 0.08);
-  border: 1.2px solid rgba(255, 112, 67, 0.14);
+  box-shadow: var(--card-shadow, 0 4px 24px rgba(0, 80, 50, 0.08));
+  border: 1px solid rgba(0, 168, 107, 0.1);
   padding: 18px;
   width: 100%;
-  max-width: 100%;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
+  align-items: stretch;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
-  animation: cardFadeIn 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .card:hover {
-  box-shadow: 0 18px 48px 0 rgba(255, 112, 67, 0.12);
-  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--card-shadow-hover, 0 16px 48px rgba(0, 120, 70, 0.14));
+  transform: translateY(-6px);
+  border-color: rgba(0, 168, 107, 0.22);
 }
 
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.card:hover .card-cta {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Image */
-.donation-image {
-  border-radius: 12px;
+.card-image-wrap {
+  position: relative;
   width: 100%;
-  max-width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #e65100;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+
+.donation-image {
+  width: 100%;
   height: 160px;
   object-fit: cover;
-  margin-bottom: 10px;
-  box-shadow: 0 6px 18px 0 rgba(255, 112, 67, 0.06);
-  background: #fff6f3;
   display: block;
+  transition: transform 0.4s ease;
+  background: #f0fdf7;
 }
 
-/* Text */
+.card:hover .donation-image {
+  transform: scale(1.04);
+}
+
 .donation-title {
   font-weight: 800;
   font-size: 1.05rem;
-  color: #ff7043;
-  margin-bottom: 8px;
-  text-align: center;
-  width: 100%;
+  color: var(--text, #1a2e28);
+  margin: 0 0 12px;
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 2.6rem;
+  min-height: 2.7rem;
 }
 
-/* Progress bar */
-.progress-bar {
-  border: 1.2px solid rgba(255, 112, 67, 0.14);
-  width: 85%;
-  border-radius: 10px;
-  height: 14px;
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e8f5ef;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--accent-gradient, linear-gradient(90deg, #00a86b, #02c77a));
+  border-radius: 999px;
+  animation: progressFill 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
   margin-bottom: 10px;
-  background: #fff6f2;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 1px 6px 0 rgba(255, 112, 67, 0.06);
-}
-
-.progress-bar::-webkit-progress-bar {
-  background-color: #fff6f2;
-  border-radius: 10px;
-  height: 14px;
-}
-
-.progress-bar::-webkit-progress-value {
-  background: linear-gradient(90deg, #ff7043 0%, #ff8a65 100%);
-  border-radius: 10px;
-}
-
-.progress-bar::-moz-progress-bar {
-  background: linear-gradient(90deg, #ff7043 0%, #ff8a65 100%);
-  border-radius: 10px;
 }
 
 .donation-amount {
-  color: #ff7043;
-  font-weight: 700;
-  font-size: 1.05rem;
-  margin-top: 4px;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
+  font-size: 0.82rem;
+  color: var(--text-muted, #5c6f68);
+  line-height: 1.4;
 }
 
-/* Size variants */
-.card-large {
-  width: 100%;
+.donation-amount strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--accent-1, #00a86b);
+  font-weight: 800;
+}
+
+.percent-badge {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-1, #00a86b);
+  background: rgba(0, 168, 107, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.card-cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent-1, #00a86b);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .card-large .donation-image {
-  height: 320px;
+  height: 280px;
 }
 
 .card-small {
   max-width: 520px;
 }
 
-.card-small .donation-image {
-  height: 160px;
-}
-
-/* Trending / hot cards glow */
 .card.trending {
-  box-shadow:
-    0 20px 60px rgba(255, 112, 67, 0.22),
-    0 0 36px rgba(255, 144, 100, 0.12);
-  border: 1px solid rgba(255, 140, 100, 0.28);
-  transform: translateY(-4px) scale(1.01);
-  animation: cardGlow 2.2s ease-in-out infinite alternate;
+  border-color: rgba(0, 168, 107, 0.2);
 }
 
-@keyframes cardGlow {
-  from {
-    box-shadow:
-      0 18px 48px rgba(255, 112, 67, 0.16),
-      0 0 16px rgba(255, 140, 100, 0.06);
-  }
-
-  to {
-    box-shadow:
-      0 26px 80px rgba(255, 112, 67, 0.3),
-      0 0 36px rgba(255, 140, 100, 0.14);
-  }
-}
-
-/* Responsive */
 @media (max-width: 1100px) {
-  .grid-container,
   .rest-scroll {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .second-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .top-single .card-large {
-    max-width: 720px;
   }
 }
 
 @media (max-width: 700px) {
-  .grid-container,
   .second-row,
   .rest-scroll {
     grid-template-columns: 1fr;
   }
 
-  .top-single .card-large,
-  .second-row .card,
-  .rest-scroll .card {
-    max-width: 100%;
-  }
-
   .card-large .donation-image {
-    height: 240px;
+    height: 220px;
   }
 }
