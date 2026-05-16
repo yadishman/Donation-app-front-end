@@ -6,12 +6,18 @@ import ListDonation from "../../donation/components/ListDonation";
 import { usePost } from "../hooks/usePost";
 import Header from '../../../components/Header';
 import Footer from "../../../components/Footer";
-
+import { useAuth } from '../../../context/AuthContext';                                          
+import { decode } from '../../../utils/decodeToken';
+import { useState } from 'react';
+import DeletePopup from '../components/DeletePopUp';
 export default function DonationDetailPage() {
     const navigate = useNavigate()
     const { id } = useParams()
     const location = useLocation()
-    const { post, loading } = usePost(location.state?.post)
+    const { post, loading } = usePost(location.state?.post,id)
+    const {token} = useAuth()
+    const {id: userId,role} = decode(token)
+    const [popup, setPopup] = useState(false)
 
     if (loading || !post) {
         return (
@@ -27,9 +33,10 @@ export default function DonationDetailPage() {
     const percent = post.budget
         ? Math.min(100, Math.round((post.amount * 100) / post.budget))
         : 0
-
+    
     return (
         <div className="page-shell">
+            {popup&& <DeletePopup setPopup={setPopup} id={id} token={token}/>}
             <Header />
             <div className="donation-main">
                 <div className="donation-details">
@@ -73,6 +80,25 @@ export default function DonationDetailPage() {
                     >
                         Donate now
                     </button>
+
+                    {userId===post.author._id && <div className="post-owner-actions">
+                        <p className="post-owner-actions-label">Manage fundraiser</p>
+                        <div className="post-owner-actions-row">
+                            <button
+                                type="button"
+                                className="post-action-btn post-action-edit"
+                                onClick={() => navigate(`/edit-donation/${post._id}`, { state: { post } })}
+                            >
+                                Edit
+                            </button>
+                            <button type="button" className="post-action-btn post-action-delete" onClick={()=>{
+                                setPopup(true)
+                            }}>
+                                Delete
+                            </button>
+                        </div>
+                    </div>}
+                    
                     <h2 className="donation-recent-title">Recent donations</h2>
                     <ListDonation id={id} />
                 </div>

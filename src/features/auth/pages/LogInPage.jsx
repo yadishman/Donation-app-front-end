@@ -10,11 +10,11 @@ export default function LoginPage() {
   const navigate = useNavigate()
 
   const { error, signinUser, clearError } = useLogin()
-  const { setToken } = useAuth()
+  const { setToken, setUsername } = useAuth()
 
   const handleSignin = async (event) => {
     event.preventDefault()
-    const success = await signinUser(email, password, setToken)
+    const success = await signinUser(email, password, setToken, setUsername)
     if (success) {
       navigate("/")
     }

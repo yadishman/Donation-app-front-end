@@ -15,14 +15,18 @@ export function AuthProvider ({children}){
         }
     })
 
+    const [username, setUsername] = useState(localStorage.getItem('username'))
+
     const logout = async ()=>{
         localStorage.removeItem("token")
+        localStorage.removeItem("username")
         setToken(null)
+        setUsername(null)
         return true
     }
 
     return (
-       <AuthContext.Provider value={{logout,token,  setToken}}>
+       <AuthContext.Provider value={{logout,token, username, setToken, setUsername}}>
        {children}
        </AuthContext.Provider>
     )

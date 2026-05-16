@@ -5,10 +5,10 @@ import getAuthErrorMessage from "../utils/getAuthErrorMessage";
 export function useLogin() {
     const [error, setError] = useState(null)
 
-    const signinUser = async (email, password, setToken) => {
+    const signinUser = async (email, password, setToken, setUsername) => {
         setError(null)
         try {
-            await loginUser(email, password, setToken)
+            await loginUser(email, password, setToken, setUsername)
             return true
         } catch (err) {
             setError(getAuthErrorMessage(err))

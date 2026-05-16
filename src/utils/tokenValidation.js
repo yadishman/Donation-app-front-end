@@ -8,6 +8,7 @@ export default function isTokenValid(token) {
         return decoded.exp * 1000 > Date.now()
     } catch {
         localStorage.removeItem("token")
+        localStorage.removeItem("username")
         return false
     }
 }

@@ -12,7 +12,7 @@ export default function RegisterPage() {
     const [matchError, setMatchError] = useState(false)
 
     const { error, addUser, clearError } = useRegister()
-    const { setToken } = useAuth()
+    const { setToken, setUsername:setUser } = useAuth()
     const navigate = useNavigate()
 
     const submitUser = async (event) => {
@@ -25,7 +25,7 @@ export default function RegisterPage() {
             return
         }
 
-        const regSuccess = await addUser(username, email, password, setToken)
+        const regSuccess = await addUser(username, email, password, setToken, setUsername, setUser)
         if (regSuccess) {
             navigate("/")
         }

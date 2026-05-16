@@ -167,6 +167,61 @@
   box-shadow: 0 12px 36px rgba(0, 168, 107, 0.35);
 }
 
+.post-owner-actions {
+  margin-bottom: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.post-owner-actions-label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.post-owner-actions-row {
+  display: flex;
+  gap: 10px;
+}
+
+.post-action-btn {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.post-action-edit {
+  background: white;
+  color: var(--accent-1);
+  border: 1.5px solid rgba(0, 168, 107, 0.35);
+}
+
+.post-action-edit:hover {
+  background: #f0fdf7;
+  border-color: var(--accent-1);
+  transform: translateY(-1px);
+}
+
+.post-action-delete {
+  background: white;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+}
+
+.post-action-delete:hover {
+  background: #fef2f2;
+  border-color: #f87171;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 900px) {
   .donation-main {
     flex-direction: column;
